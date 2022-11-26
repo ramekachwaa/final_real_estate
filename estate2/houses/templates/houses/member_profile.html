@@ -1,0 +1,54 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+  <main style="margin-top:150px;" id="main">
+      <h1 style="text-align:center;color:green;">{{current_member}}</h1>
+      <h1>Team Leader : {{current_member.leader.user}}</h1>
+      <h1>Current Leader : {{user.team_leader.user}}</h1>
+{% if current_member.leader == user.team_leader %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Code ID</th>
+      <th scope="col">Code Value</th>
+      {% if user.team_leader == current_member.leader %}
+        <th scope="col">Delete</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for code in current_member.codes.all %}
+    <tr>
+      <td>{{code.id}}</td>
+      <td>{{code.project.name}}</td>
+      {% if user.team_leader == current_member.leader %}
+        {% if code in current_member.codes.all %}
+        <td><p style="color:red;">{{code.project}}    <a class="btn btn-danger" href="{% url 'remove_code_from_member' 1 current_member.id code.id   %}">REMOVE</a></td>
+        {% else %}
+        <td><p style="color:green;">{{code.project}}    <a class="btn btn-success" href="{% url 'send_code_to_member' 1 current_member.id code.id   %}">ADD</a></p></td>
+        {% endif %}
+      {% endif %}
+    </tr>
+    {% endfor %}
+
+{% if user.team_leader == current_member.leader %}
+  {% for code in all_codes %}
+              {% if code in current_member.codes.all %}
+                  <p style="color:red;">{{code.project}}    <a class="btn btn-danger" href="{% url 'remove_code_from_member' 1 current_member.id code.id   %}">REMOVE</a></p>
+              {% else %}
+                  <p style="color:green;">{{code.project}}    <a class="btn btn-success" href="{% url 'send_code_to_member' 1 current_member.id code.id   %}">ADD</a></p>
+              {% endif %}
+          {% empty %}
+            <p style="color:red;">No Codes</p>
+  {% endfor %}
+{% endif %}
+  </tbody>
+</table>
+{% else %}
+    <h1 style="text-align:center;color:red;">You Are Not the leader of this member</h1>
+{% endif %}
+  </main><!-- End #main -->
+{% endblock %}

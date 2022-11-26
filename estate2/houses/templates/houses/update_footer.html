@@ -1,0 +1,10 @@
+{% extends 'houses/base.html' %}
+
+
+{% block content %}
+<form method="post" style="margin:0 auto;text-align:center;margin-top:150px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+{% endblock %}

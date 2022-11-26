@@ -1,0 +1,14 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<section class="intro-single">
+</section>
+<form method="POST" style="position:absolute;top:20%;left:30%;">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{object}} ?</p>
+    <input type="submit" value="confirm" style="position:absolute;top:55%;left:30%;width:130px;height:40px;margin:13px 15px;">
+</form>
+{% endblock %}

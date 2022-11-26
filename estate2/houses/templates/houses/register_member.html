@@ -1,0 +1,17 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Register a new member{% endblock %}
+
+{% block content %}
+
+
+<form method="post" enctype="multipart/form-data" style="margin:100px 30px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Register" style="width:130px;height:40px;margin:13px 15px;">
+</form>
+
+
+
+{% endblock %}

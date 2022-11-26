@@ -1,0 +1,17 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Add a new Property{% endblock %}
+
+{% block content %}
+
+
+<form method="post" enctype="multipart/form-data" style="margin:70px 30px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" style="width:130px;height:40px;margin:13px 15px;">
+</form>
+
+
+
+{% endblock %}

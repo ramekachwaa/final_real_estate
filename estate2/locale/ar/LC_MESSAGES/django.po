@@ -1,0 +1,313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-30 21:48+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\estate2\settings.py:134
+msgid "English"
+msgstr "انجليزي"
+
+#: .\estate2\settings.py:135
+msgid "Arabic"
+msgstr "عربي"
+
+#: .\houses\models.py:7
+msgid "Balcony"
+msgstr "شرفة"
+
+#: .\houses\models.py:8
+msgid "Cable TV"
+msgstr "تلفاز"
+
+#: .\houses\models.py:9
+msgid "Internet"
+msgstr "انترنت"
+
+#: .\houses\models.py:10
+msgid "Tennis Courts"
+msgstr "ملعب تنس"
+
+#: .\houses\models.py:11
+msgid "Parking"
+msgstr "مكان ركن السيارات"
+
+#: .\houses\models.py:13 .\houses\models.py:24
+#: .\houses\templates\houses\agent-single.html:114
+#: .\houses\templates\houses\property-single.html:296
+msgid "name"
+msgstr "الاسم"
+
+#: .\houses\models.py:25
+msgid "age"
+msgstr "العمر"
+
+#: .\houses\models.py:26 .\houses\models.py:73
+#: .\houses\templates\houses\agent-single.html:96
+#: .\houses\templates\houses\agent-single.html:119
+#: .\houses\templates\houses\property-single.html:246
+#: .\houses\templates\houses\property-single.html:301
+msgid "email"
+msgstr "الايميل"
+
+#: .\houses\models.py:27 .\houses\templates\houses\agent-single.html:86
+#: .\houses\templates\houses\property-single.html:240
+msgid "phone"
+msgstr "رقم الهاتف"
+
+#: .\houses\models.py:28 .\houses\templates\houses\agent-single.html:102
+msgid "skype"
+msgstr "سكايب"
+
+#: .\houses\models.py:29 .\houses\models.py:38 .\houses\models.py:55
+#: .\houses\models.py:65
+msgid "img"
+msgstr "الصوره"
+
+#: .\houses\models.py:35
+msgid "sale"
+msgstr "بيع"
+
+#: .\houses\models.py:36
+msgid "rent"
+msgstr "ايجار"
+
+#: .\houses\models.py:39
+msgid "address"
+msgstr "العنوان"
+
+#: .\houses\models.py:40 .\houses\templates\houses\property-single.html:121
+msgid "location"
+msgstr "الموقع"
+
+#: .\houses\models.py:41 .\houses\templates\houses\property-single.html:129
+msgid "status"
+msgstr "ايجار أم بيع"
+
+#: .\houses\models.py:42 .\houses\templates\houses\property-single.html:133
+msgid "area"
+msgstr "المساحه"
+
+#: .\houses\models.py:43
+msgid "beds"
+msgstr "عدد السرائر"
+
+#: .\houses\models.py:44
+msgid "bathrooms"
+msgstr "عدد الحمامات"
+
+#: .\houses\models.py:45
+msgid "garages"
+msgstr "عدد الجاراجات"
+
+#: .\houses\models.py:46
+msgid "price"
+msgstr "السعر"
+
+#: .\houses\models.py:47 .\houses\models.py:74
+msgid "agent"
+msgstr "العميل"
+
+#: .\houses\models.py:48
+msgid "description"
+msgstr "الوصف"
+
+#: .\houses\models.py:49 .\houses\templates\houses\property-single.html:175
+msgid "amenities"
+msgstr "الاضافات"
+
+#: .\houses\models.py:54
+msgid "title"
+msgstr "العنوان"
+
+#: .\houses\models.py:56 .\houses\models.py:67 .\houses\models.py:72
+msgid "content"
+msgstr "المحتوي"
+
+#: .\houses\models.py:57
+msgid "author"
+msgstr "صاحب الموضوع"
+
+#: .\houses\models.py:58
+msgid "category"
+msgstr "التصنيف"
+
+#: .\houses\models.py:59 .\houses\models.py:66
+msgid "date"
+msgstr "الميعاد"
+
+#: .\houses\models.py:64 .\houses\models.py:71
+msgid "user_name"
+msgstr "اسم المرسل"
+
+#: .\houses\models.py:68
+msgid "blog"
+msgstr "موضوع"
+
+#: .\houses\templates\houses\add_house.html:13
+msgid "other images"
+msgstr "صور أخري"
+
+#: .\houses\templates\houses\agent-single.html:36
+#: .\houses\templates\houses\property-single.html:41
+msgid "Please"
+msgstr "رجاء"
+
+#: .\houses\templates\houses\agent-single.html:36
+#: .\houses\templates\houses\property-single.html:41
+msgid "Log in"
+msgstr "سجل الدخول"
+
+#: .\houses\templates\houses\agent-single.html:36
+#: .\houses\templates\houses\property-single.html:41
+msgid "to edit"
+msgstr "للتعديل"
+
+#: .\houses\templates\houses\agent-single.html:41
+#: .\houses\templates\houses\property-single.html:47
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\houses\templates\houses\agent-single.html:44
+#: .\houses\templates\houses\property-single.html:50
+msgid "Delete"
+msgstr "مسح"
+
+#: .\houses\templates\houses\agent-single.html:124
+#: .\houses\templates\houses\property-single.html:306
+msgid "comment"
+msgstr "تعليق"
+
+#: .\houses\templates\houses\agent-single.html:128
+#: .\houses\templates\houses\property-single.html:310
+msgid "Send Message"
+msgstr "أرسل الرساله"
+
+#: .\houses\templates\houses\agent-single.html:162
+msgid "My Properties"
+msgstr "الممتلكات"
+
+#: .\houses\templates\houses\agent-single.html:198
+msgid "Click here to view"
+msgstr "اضغط هنا للعرض"
+
+#: .\houses\templates\houses\agent-single.html:205
+msgid "Area"
+msgstr "المساحه"
+
+#: .\houses\templates\houses\agent-single.html:211
+#: .\houses\templates\houses\property-single.html:139
+msgid "Beds"
+msgstr "عدد السرائر"
+
+#: .\houses\templates\houses\agent-single.html:215
+#: .\houses\templates\houses\property-single.html:143
+msgid "Baths"
+msgstr "عدد الحمامات"
+
+#: .\houses\templates\houses\agent-single.html:219
+#: .\houses\templates\houses\property-single.html:147
+msgid "Garages"
+msgstr "عدد الجاراجات"
+
+#: .\houses\templates\houses\base.html:113
+#: .\houses\templates\houses\base.html:117
+msgid "Home"
+msgstr "الصفحة الرئيسية"
+
+#: .\houses\templates\houses\base.html:126
+#: .\houses\templates\houses\base.html:132
+msgid "Profile"
+msgstr "الصفحة الشخصية"
+
+#: .\houses\templates\houses\base.html:139
+#: .\houses\templates\houses\base.html:143
+#, fuzzy
+#| msgid "Send Message"
+msgid "Messages"
+msgstr "أرسل الرساله"
+
+#: .\houses\templates\houses\base.html:148
+#, fuzzy
+#| msgid "Log in"
+msgid "Log Out"
+msgstr "سجل الدخول"
+
+#: .\houses\templates\houses\base.html:154
+#: .\houses\templates\houses\base.html:158
+msgid "Register"
+msgstr "عمل حساب جديد"
+
+#: .\houses\templates\houses\base.html:163
+#: .\houses\templates\houses\base.html:167
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: .\houses\templates\houses\base.html:173
+#: .\houses\templates\houses\base.html:177
+msgid "About"
+msgstr "من نحن"
+
+#: .\houses\templates\houses\base.html:182
+msgid "Pages"
+msgstr "الصفحات"
+
+#: .\houses\templates\houses\base.html:184
+msgid "Properties"
+msgstr "الممتلكات"
+
+#: .\houses\templates\houses\base.html:185
+msgid "Agents"
+msgstr "العملاء"
+
+#: .\houses\templates\houses\base.html:186
+msgid "Blogs"
+msgstr "المواضيع"
+
+#: .\houses\templates\houses\property-single.html:109
+msgid "Quick Summary"
+msgstr "وصف مختصر"
+
+#: .\houses\templates\houses\property-single.html:117
+msgid "Property ID"
+msgstr "الرقم التعريفي"
+
+#: .\houses\templates\houses\property-single.html:125
+msgid "Property Type"
+msgstr "نوع المنزل"
+
+#: .\houses\templates\houses\property-single.html:161
+msgid "Property Description"
+msgstr "وصف المنزل"
+
+#: .\houses\templates\houses\property-single.html:220
+msgid "Contact Agent"
+msgstr "التواصل مع العميل"
+
+#, fuzzy
+#~| msgid "location"
+#~ msgid "Location"
+#~ msgstr "الموقع"
+
+#, fuzzy
+#~| msgid "status"
+#~ msgid "Status"
+#~ msgstr "ايجار أم بيع"
+
+#~ msgid "Amenities"
+#~ msgstr "الاضافات"

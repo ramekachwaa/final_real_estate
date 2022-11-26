@@ -1,0 +1,47 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">{{agent.name}}</h1>
+              <span class="color-text-a">Agent Immobiliari</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single -->
+    <!-- ======= Agent Single ======= -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Code ID</th>
+      <th scope="col">Code Value</th>
+      {% if user.team_leader_set %}
+        <th scope="col">Delete</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for code in user.member_set.all.0.codes.all %}
+    <tr>
+      <td>{{code.id}}</td>
+      <td>{{code.value}}</td>
+      {% if user.team_leader_set %}
+        <td><a class="btn btn-danger" href="{% url 'remove_code_from_member' user.team_leader_set.all.0.id user.member_set.all.0.id code.id   %}">Delete</a></td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  </main><!-- End #main -->
+{% endblock %}

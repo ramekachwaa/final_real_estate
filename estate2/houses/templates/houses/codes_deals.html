@@ -1,0 +1,70 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Codes Deal{% endblock %}
+{% block css %}
+.body{
+  position:absolute;
+bottom:100%;
+}
+{% endblock %}
+{% block content %}
+  <main id="main" style="position:relative;top:-100px;">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+    </section><!-- End Intro Single -->
+    <!--
+{% if codes.count >= 1 %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">value</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for code in codes %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{code.value}}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+-->
+{% if members.count >= 1 %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Member Number</th>
+      <th scope="col">Codes Given</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for member in members %}
+    <tr>
+      <td><a style="color:blue;" href="{% url 'member_profile' member.id %}">{{member.user.username}}</a></td>
+      <td>
+          {% for code in all_codes %}
+              {% if code in member.codes.all %}
+                  <p style="color:red;">{{code.project}}    <a class="btn btn-danger" href="{% url 'remove_code_from_member' leader.id member.id code.id   %}">REMOVE</a></p>
+              {% else %}
+                  <p style="color:green;">{{code.project}}    <a class="btn btn-success" href="{% url 'send_code_to_member' leader.id member.id code.id   %}">ADD</a></p>
+              {% endif %}
+          {% empty %}
+            <p style="color:red;">No Codes</p>
+          {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+  </main><!-- End #main -->
+{% endblock %}

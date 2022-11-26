@@ -1,0 +1,38 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Show All Companies{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div style="margin:80px 0;">
+  <a class="btn btn-outline-danger" href="{% url 'add_company' %}">Add a new Company</a>
+</div>
+{% endif %}
+  <main id="main" style="margin:100px 0;">
+<div style="container;display:flex;justify-content:center;align-items:center;">
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">number of units</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for name,num in types.items %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+        <td><a href="{% url 'get_type_only' name %}">{{name}}</a></td>
+      <td>{{num}}</td>
+      <td></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+  </main><!-- End #main -->
+
+{% endblock %}

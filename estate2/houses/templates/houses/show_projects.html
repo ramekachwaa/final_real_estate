@@ -1,0 +1,43 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div style="margin:80px 0;">
+  <a class="btn btn-outline-danger" href="{% url 'add_project' %}">Add a new Project</a>
+</div>
+{% endif %}
+  <main id="main" style="margin:100px 0;">
+<div style="container;display:flex;justify-content:center;align-items:center;">
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">developer</th>
+      <th scope="col">Type</th>
+      <th scope="col">Location</th>
+      <th scope="col">number of units</th>
+    </tr>
+  </thead>
+  <tbody><!-- position:relative;top:50px;  -->
+    {% for project in all_projects %}
+    <tr style="position:relative">
+      <th scope="row">{{forloop.counter}}</th>
+      <td><a style="color:blue;" href="{% url 'show_single_project' project.id %}">{{project.name}}</a></td>
+      <td><a style="color:blue;" href="{% url 'show_single_company' project.company.id %}"><div><img style="width:60%;height:50px;" src="{{project.company.logo.url}}"></div>{{project.company}}</a></td>
+      <td>{{project.type}}</td>
+      <td>{{project.location}}</td>
+      <td>{{project.house_set.all.count}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+  </main><!-- End #main -->
+
+{% endblock %}

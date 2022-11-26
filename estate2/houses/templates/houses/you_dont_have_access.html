@@ -1,0 +1,42 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+  {% block title %} Single Property {% endblock %}
+
+
+
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">{{house.location}}</h1>
+                <h1 style="text-align:center;color:red;">YOU DONT HAVE ACCESS</h1>
+              <span class="color-text-a">{{house.address}}</span>
+            </div>
+          </div>
+   {% if user.is_authenticated %}
+          <div>
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+
+              </ol>
+            </nav>
+          </div>
+   {% endif %}
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+
+  </main><!-- End #main -->
+
+{% endblock %}

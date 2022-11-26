@@ -1,0 +1,102 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+          <div>
+              {% if request.user.is_authenticated %}
+                <a href="{% url 'edit_about' 1 %}" class="btn btn-success">Edit</a>
+              {% endif %}
+            </div>
+            <div class="title-single-box">
+              {% if request.user.is_authenticated %}
+              <h1 class="title-single">{{request.user.about_set.all.0.first_paragraph}}</h1>
+              {% else %}
+              <h1 class="title-single">We Do Great Design For Creative Folks</h1>
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= About Section ======= -->
+    <section class="section-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 position-relative">
+
+            <div class="about-img-box">
+              {% if request.user.about_set.all.0.img1 %}
+              <img src="{{request.user.about_set.all.0.img1.url}}" alt="" class="img-fluid">
+              {% else %}
+               <img src="{% static 'houses/assets/img/slide-about-1.jpg' %}" alt="" class="img-fluid">
+              {% endif %}
+            </div>
+
+            <div class="sinse-box">
+              {% if request.user.is_authenticated %}
+              <h3 class="sinse-title">{{request.user.about_set.all.0.name1}}</h3>
+                {% else %}
+              <h3 class="sinse-title">red winners</h3>
+                {% endif %}
+                <span></span>
+              {% if request.user.is_authenticated %}
+                <br> {{request.user.about_set.all.0.since_when}}
+              {% else %}
+                <br> Since 2017
+              {% endif %}
+            </div>
+
+          </div>
+          <div class="col-md-12 section-t8 position-relative">
+            <div class="row">
+              <div class="col-md-6 col-lg-5">
+                {% if request.user.about_set.all.0.img2 %}
+                <img src="{{request.user.about_set.all.0.img2.url}}" alt="" class="img-fluid">
+                {% else %}
+                <img src="{% static 'houses/assets/img/about-2.jpg' %}" alt="" class="img-fluid">
+                {% endif %}
+              </div>
+              <div class="col-lg-2  d-none d-lg-block position-relative">
+                <div class="title-vertical d-flex justify-content-start">
+                  <span>{{request.user.about_set.all.0.name1}} Exclusive Property</span>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-5 section-md-t3">
+                <div class="title-box-d">
+                </div>
+                <p class="color-text-a">{{request.user.about_set.all.0.description1}}
+                  Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget
+                  consectetur sed, convallis
+                  at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+                  ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
+                  neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
+                </p>
+                <p class="color-text-a">{{request.user.about_set.all.0.description2}}
+                  Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
+                  Mauris blandit aliquet
+                  elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed,
+                  convallis at tellus.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======Team Section ======= -->
+
+  </main><!-- End #main -->
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Codes Deal{% endblock %}
+{% block css %}
+.body{
+  position:absolute;
+bottom:100%;
+}
+{% endblock %}
+{% block content %}
+  <main id="main" style="position:relative;top:-100px;">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+    </section><!-- End Intro Single ask_for_permission member.id project.id -->
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Permission</th>
+      <th scope="col">Member</th>
+      <th scope="col">Leader</th>
+      <th scope="col">Code</th>
+      <th scope="col">Accepted</th>
+      <th scope="col">Accept</th>
+      <th scope="col">Reject</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for code in all_code_permissions.all %}
+    <tr>
+      <td><a style="color:blue;" href="{% url 'member_profile' code.member.id %}">{{forloop.counter}}</a></td>
+      <td>{{code.member}}</td>
+      <td>{{code.leader}}</td>
+      <td>{{code.code}}</td>
+      <td>{{code.accepted}}</td>
+      <td><a class="btn btn-success" href="{% url 'accept_permission' code.id %}">ACCEPT</a></td>
+      <td><a class="btn btn-danger" href="{% url 'reject_permission' code.id %}">REJECT</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  </main><!-- End #main -->
+{% endblock %}

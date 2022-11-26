@@ -1,0 +1,60 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+
+ <main id="main" style="position:relative;top:-100px;">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+    </section><!-- End Intro Single -->
+
+<h4>number of inquiries : {{all_inqures.count}}</h4>
+<table class="table table-striped" style="width:100%">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" style="width:100%">Date</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Location</th>
+      <th scope="col">Type</th>
+      <th scope="col">Buyer Or Seller</th>
+      <th scope="col">Max Price</th>
+      <th scope="col">Min Size</th>
+      <th scope="col">Beds</th>
+      <th scope="col">Bathrooms</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for inquiry in all_inqures %}
+    <tr>
+      <th scope="row"> {{ forloop.counter }}</th>
+      <td>{{inquiry.date}}</td>
+      <td>{{inquiry.first_name}}</td>
+      <td>{{inquiry.last_name}}</td>
+      <td>{{inquiry.email}}</td>
+      <td>{{inquiry.phone_number}}</td>
+      <td>{{inquiry.location}}</td>
+      <td>{{inquiry.type}}</td>
+      <td>{{inquiry.buyer_or_seller}}</td>
+      <td>{{inquiry.max_price}}</td>
+      <td>{{inquiry.min_size}}</td>
+      <td>{{inquiry.beds}}</td>
+      <td>{{inquiry.bathrooms}}</td>
+      <td><a class="btn btn-danger" href="{% url 'delete_inquiry' inquiry.id %}">Delete</a></td>
+       <td><a class="btn btn-success" href="{% url 'edit_inquiry' inquiry.id %}">Edit</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+  </main><!-- End #main -->
+
+{% endblock %}

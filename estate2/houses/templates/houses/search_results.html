@@ -1,0 +1,342 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+
+
+  <main id="main">
+
+      <div style="background-color:#4c4c4c;color:white;position:absolute;top:100px;">
+  <form style="z-index:1000;display:flex;flex-wrap:wrap;" action="{% url 'search_for' %}">
+    {{SearchForm.as_p}}
+    <button id="search_pressed" class="btn btn-danger" value="submit" style="width:130px;height:40px;margin:13px 15px;border:2px solid white;">Search</button>
+  </form>
+      </div>
+
+</div>
+
+    <!-- ======= Intro Single ======= -->
+
+    <section class="intro-single" style="margin-top:100px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Our Amazing Properties</h1>
+              <span class="color-text-a">Grid Properties</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Properties Grid
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Property Grid ======= -->
+    <section class="property-grid grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="grid-option">
+
+
+
+              <form method="POST" action="{% url 'search_for' %}?{{request.GET.urlencode}}">
+                  {% csrf_token %}
+                <select id="choices" name="order_by" class="custom-select">
+                    <option selected value="0">None</option>
+                    {% if order_value == "1" %}
+                  <option selected value="1">Price - Low to High</option>
+                    {% else %}
+                    <option value="1">Price - Low to High</option>
+                    {% endif %}
+
+                    {% if order_value == "2" %}
+                  <option selected value="2">Price - High to Low</option>
+                    {% else %}
+                    <option value="2">Price - High to Low</option>
+                    {% endif %}
+
+                    {% if order_value == "3" %}
+                  <option selected value="3">Area - Low to High</option>
+                    {% else %}
+                    <option value="3">Area - Low to High</option>
+                    {% endif %}
+
+                    {% if order_value == "4" %}
+                  <option selected value="4">Area - High to Low</option>
+                    {% else %}
+                    <option value="4">Area - High to Low</option>
+                    {% endif %}
+                </select>
+                  <button id="order_this" value="submit">Order</button>
+              </form>
+
+
+
+            </div>
+          </div>
+
+{% if one_house %}
+            {% for house in all_houses %}
+            <div class="col-md-4">
+                <div class="card-box-a card-shadow">
+                  <div class="img-box-a">
+                    <img src="{{house.img.url}}" alt="" class="img-a img-fluid" style="width:600px;height:400px;">
+                  </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="{% url 'single' house.id %}">{{house.location}}
+                            <br /> {{house.address}}</a>
+                        </h2>
+                          <a href="{% url 'show_single_company' house.company.id %}"><span style="color:white;"><img style="width:50px;height:50px;" src="{{house.company.logo.url}}">{{house.company}}  ({{house.project}})</span></a>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex">
+                          <span style="border:2px solid white;" class="price-a btn btn-danger">{{house.status}} | $ {{house.price}}.000</span>
+                        </div>
+                        <a href="{% url 'single' house.id %}" class="link-a">Click here to view
+                          <span class="bi bi-chevron-right"></span>
+                        </a>
+                      </div>
+                      <div style="background-color:red;border:2px solid white;" class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Area</h4>
+                            <span>{{house.area}}m
+                              <sup>2</sup>
+                            </span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Beds</h4>
+                            <span>{{house.beds}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Baths</h4>
+                            <span>{{house.bathrooms}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Garages</h4>
+                            <span>{{house.garages}}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+
+{% else %}
+
+        {% for house in page_obj %}
+              <div class="col-md-4">
+                <div class="card-box-a card-shadow">
+                  <div class="img-box-a">
+                    <img src="{{house.img.url}}" alt="" class="img-a img-fluid" style="width:600px;height:400px;">
+                  </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="{% url 'single' house.id %}"><span style="color:red;">{{house.project}}</span>--{{house.location}}
+                            <br /> {{house.address}}</a>
+                        </h2>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex">
+                          <span style="border:2px solid white;" class="price-a btn btn-danger">{{house.status}} | $ {{house.price}}.000</span>
+                        </div>
+                        <a href="{% url 'single' house.id %}" class="link-a">Click here to view
+                          <span class="bi bi-chevron-right"></span>
+                        </a>
+                      </div>
+                      <div style="background-color:red;border:2px solid white;" class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Area</h4>
+                            <span>{{house.area}}m
+                              <sup>2</sup>
+                            </span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Beds</h4>
+                            <span>{{house.beds}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Baths</h4>
+                            <span>{{house.bathrooms}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Garages</h4>
+                            <span>{{house.garages}}</span>
+                          </li>
+                            <li>
+                          <h4 class="card-info-title">Company</h4>
+                          <a href="{% url 'show_single_company' house.company.id %}"><span style="color:white;"><img style="position:absolute;right:20px;top:30px;width:50px;height:30px;" src="{{house.company.logo.url}}"></span></a>
+                        </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        {% endfor %}
+{% endif %}
+        </div>
+
+<!--
+        <span class="current">
+          page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+        </span>
+        <br>
+        {% if page_obj.has_previous %}
+          <a href="?{{request.GET.urlencode}}&page=1">First</a>
+          <a href="?{{request.GET.urlencode}}&page={{page_obj.previous_page_number}}">Previous</a>
+        {% endif %}
+
+
+        {% for page in page_obj.paginator.page_range %}
+          {% if page == page_obj.number %}
+            <a href="?{{request.GET.urlencode}}&page={{page}}" style="color:blue;">{{page}}</a>
+          {% else %}
+            <a href="?{{request.GET.urlencode}}&page={{page}}">{{page}}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a href="?{{request.GET.urlencode}}&page={{page_obj.next_page_number}}">Next</a>
+        <a href="?{{request.GET.urlencode}}&page={{page_obj.paginator.num_pages}}">Last</a>
+        {% endif %}
+
+
+-->
+        <div class="row">
+          <div class="col-sm-12">
+            <nav class="pagination-a">
+        <ul class="pagination justify-content-end">
+{% if page_obj.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?{{request.GET.urlencode}}&page={{page_obj.previous_page_number}}&order_by={{order_value}}" tabindex="-1">
+                    <span class="bi bi-chevron-left"></span>
+                  </a>
+                </li>
+{% endif %}
+    {% for page in page_obj.paginator.page_range %}
+          {% if page == page_obj.number %}
+                <li class="page-item active">
+                  <a class="page-link" href="?{{request.GET.urlencode}}&page={{page}}&order_by={{order_value}}">{{page}}</a>
+                </li>
+          {% else %}
+          <li class="page-item">
+                  <a class="page-link" href="?{{request.GET.urlencode}}&page={{page}}&order_by={{order_value}}">{{page}}</a>
+                </li>
+          {% endif %}
+    {% endfor %}
+
+{% if page_obj.has_next %}
+                <li class="page-item next">
+                  <a class="page-link" href="?{{request.GET.urlencode}}&page={{page_obj.next_page_number}}&order_by={{order_value}}">
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </li>
+{% endif %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+<!--
+        <div class="row">
+          <div class="col-sm-12">
+            <nav class="pagination-a">
+
+              <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">
+                    <span class="bi bi-chevron-left"></span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item next">
+                  <a class="page-link" href="#">
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </li>
+              </ul>
+
+            </nav>
+          </div>
+        </div>
+-->
+      </div>
+    </section><!-- End Property Grid Single-->
+<script>
+    let order = document.querySelector("#order_this");
+    let choices = document.querySelector("#choices");
+    order.addEventListener("click",function myFunc(e){
+        if(choices.value == "0"){
+            e.preventDefault();
+        }
+    });
+</script>
+      <script>
+  let submit = document.querySelector("#search_pressed");
+  submit.addEventListener("click",function(){
+  let beds = document.querySelector("#beds");
+  let bathrooms = document.querySelector("#bathrooms");
+
+  let min_price = document.querySelector("#min_price");
+  let max_price = document.querySelector("#max_price");
+  let min_area = document.querySelector("#min_area");
+  let max_area = document.querySelector("#max_area");
+
+  if(beds.value == ""){
+    beds.value = 10;
+  }
+  if(bathrooms.value == ""){
+    bathrooms.value = 10;
+  }
+
+  if(min_price.value == ""){
+    min_price.value = 1;
+  }
+  if(max_price.value == ""){
+    max_price.value = 10000000000000;
+  }
+
+  if(min_area.value == ""){
+    min_area.value = 1;
+  }
+  if(max_area.value == ""){
+    max_area.value = 10000000000000;
+  }
+    return true;
+  });
+
+</script>
+  </main><!-- End #main -->
+
+{% endblock %}

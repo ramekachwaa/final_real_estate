@@ -1,0 +1,18 @@
+users are one of 4:
+(1)guest
+(2)team member
+(3)team leader
+(4)Admin
+
+#guests cant view any property details.
+#team members need codes to be able to view certian projects, only a member's team leader may add or remove
+	codes from any team member at any time through the 'codes deal' page.
+#team leaders may add any member to their team through the 'profiles' page in which a team leader
+	may add or remove team members from his team.
+#any team leader or admin can create/register new team members through the pages 'Register member' and 'Register Leader'
+#a new code may be created by visiting the page 'add new code' , each code has 2 details:
+	(1)project name that this code allows access to.
+	(2)members who have that code.
+#access to messages and inquiries page has been limited to only the Admin.
+
+#Any team member can ask for permission from his leader so that he can access a certain project.

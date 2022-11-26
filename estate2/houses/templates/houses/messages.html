@@ -1,0 +1,51 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Messages{% endblock %}
+{% block css %}
+.body{
+  position:absolute;
+bottom:100%;
+}
+{% endblock %}
+{% block content %}
+  <main id="main" style="position:relative;top:-100px;">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+    </section><!-- End Intro Single -->
+
+<h1>Number of messages : {{all_msgs.count}}</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">Project</th>
+      <th scope="col">Content</th>
+      <th scope="col">Date</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for msg in all_msgs %}
+    <tr>
+      <td>{{msg.id}}</td>
+      <td>{{msg.user_name}}</td>
+      <td>{{msg.phone_number}}</td>
+      <td>{{msg.email}}</td>
+      <td style="width:100px">{{msg.project}}</td>
+      <td style="font-weight:bold;">{{msg.content}}</td>
+      <td>{{msg.date}}</td>
+      <td><a class="btn btn-danger" href="{% url 'delete_msg' msg.id %}">Delete</a></td>
+      <td><a class="btn btn-success" href="{% url 'edit_msg' msg.id %}">Edit</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  </main><!-- End #main -->
+{% endblock %}

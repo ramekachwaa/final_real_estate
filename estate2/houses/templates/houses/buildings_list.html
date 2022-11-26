@@ -1,0 +1,146 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+
+
+  <main id="main">
+      <div style="background-color:#4c4c4c;color:white;position:absolute;top:130px;">
+
+      </div>
+    <!-- ======= Intro Single ======= -->
+
+    <section class="intro-single" style="position:relative;top:1000px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Our Amazing Properties</h1>
+              <span class="color-text-a">Grid Properties</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Properties Grid
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Property Grid ======= -->
+    <section class="property-grid grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="grid-option">
+
+
+
+            </div>
+          </div>
+
+
+{% for house in buildings_only %}
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{house.img.url}}" alt="" class="img-a img-fluid" style="width:600px;height:400px;">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">{{house.location}}
+                        <br /> {{house.address}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">{{house.status}} | $ {{house.price}}.000</span>
+                    </div>
+                    <a href="{% url 'single' house.id %}" class="link-a">Click here to view
+                      <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>{{house.area}}m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>{{house.beds}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>{{house.bathrooms}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>{{house.garages}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+{% endfor %}
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-sm-12">
+            <nav class="pagination-a">
+        <ul class="pagination justify-content-end">
+{% if page_obj.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?{{request.GET.urlencode}}&page={{page_obj.previous_page_number}}" tabindex="-1">
+                    <span class="bi bi-chevron-left"></span>
+                  </a>
+                </li>
+{% endif %}
+    {% for page in page_obj.paginator.page_range %}
+          {% if page == page_obj.number %}
+                <li class="page-item active">
+                  <a class="page-link" href="?{{request.GET.urlencode}}&page={{page}}">{{page}}</a>
+                </li>
+          {% else %}
+          <li class="page-item">
+                  <a class="page-link" href="?{{request.GET.urlencode}}&page={{page}}">{{page}}</a>
+                </li>
+          {% endif %}
+    {% endfor %}
+
+{% if page_obj.has_next %}
+                <li class="page-item next">
+                  <a class="page-link" href="?{{request.GET.urlencode}}&page={{page_obj.next_page_number}}">
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </li>
+{% endif %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Property Grid Single-->
+
+  </main><!-- End #main -->
+
+{% endblock %}

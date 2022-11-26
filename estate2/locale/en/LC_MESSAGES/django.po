@@ -1,0 +1,297 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-30 21:48+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\estate2\settings.py:134
+msgid "English"
+msgstr "English"
+
+#: .\estate2\settings.py:135
+msgid "Arabic"
+msgstr "Arabic"
+
+#: .\houses\models.py:7
+msgid "Balcony"
+msgstr ""
+
+#: .\houses\models.py:8
+msgid "Cable TV"
+msgstr ""
+
+#: .\houses\models.py:9
+msgid "Internet"
+msgstr ""
+
+#: .\houses\models.py:10
+msgid "Tennis Courts"
+msgstr ""
+
+#: .\houses\models.py:11
+msgid "Parking"
+msgstr ""
+
+#: .\houses\models.py:13 .\houses\models.py:24
+#: .\houses\templates\houses\agent-single.html:114
+#: .\houses\templates\houses\property-single.html:296
+msgid "name"
+msgstr "name"
+
+#: .\houses\models.py:25
+msgid "age"
+msgstr "age"
+
+#: .\houses\models.py:26 .\houses\models.py:73
+#: .\houses\templates\houses\agent-single.html:96
+#: .\houses\templates\houses\agent-single.html:119
+#: .\houses\templates\houses\property-single.html:246
+#: .\houses\templates\houses\property-single.html:301
+msgid "email"
+msgstr "email"
+
+#: .\houses\models.py:27 .\houses\templates\houses\agent-single.html:86
+#: .\houses\templates\houses\property-single.html:240
+msgid "phone"
+msgstr "phone"
+
+#: .\houses\models.py:28 .\houses\templates\houses\agent-single.html:102
+msgid "skype"
+msgstr "skype"
+
+#: .\houses\models.py:29 .\houses\models.py:38 .\houses\models.py:55
+#: .\houses\models.py:65
+msgid "img"
+msgstr "img"
+
+#: .\houses\models.py:35
+msgid "sale"
+msgstr ""
+
+#: .\houses\models.py:36
+msgid "rent"
+msgstr ""
+
+#: .\houses\models.py:39
+msgid "address"
+msgstr ""
+
+#: .\houses\models.py:40 .\houses\templates\houses\property-single.html:121
+msgid "location"
+msgstr ""
+
+#: .\houses\models.py:41 .\houses\templates\houses\property-single.html:129
+msgid "status"
+msgstr ""
+
+#: .\houses\models.py:42 .\houses\templates\houses\property-single.html:133
+msgid "area"
+msgstr ""
+
+#: .\houses\models.py:43
+msgid "beds"
+msgstr ""
+
+#: .\houses\models.py:44
+msgid "bathrooms"
+msgstr ""
+
+#: .\houses\models.py:45
+msgid "garages"
+msgstr ""
+
+#: .\houses\models.py:46
+msgid "price"
+msgstr ""
+
+#: .\houses\models.py:47 .\houses\models.py:74
+msgid "agent"
+msgstr ""
+
+#: .\houses\models.py:48
+msgid "description"
+msgstr ""
+
+#: .\houses\models.py:49 .\houses\templates\houses\property-single.html:175
+msgid "amenities"
+msgstr ""
+
+#: .\houses\models.py:54
+msgid "title"
+msgstr ""
+
+#: .\houses\models.py:56 .\houses\models.py:67 .\houses\models.py:72
+msgid "content"
+msgstr ""
+
+#: .\houses\models.py:57
+msgid "author"
+msgstr ""
+
+#: .\houses\models.py:58
+msgid "category"
+msgstr ""
+
+#: .\houses\models.py:59 .\houses\models.py:66
+msgid "date"
+msgstr ""
+
+#: .\houses\models.py:64 .\houses\models.py:71
+#, fuzzy
+#| msgid "name"
+msgid "user_name"
+msgstr "name"
+
+#: .\houses\models.py:68
+msgid "blog"
+msgstr ""
+
+#: .\houses\templates\houses\add_house.html:13
+msgid "other images"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:36
+#: .\houses\templates\houses\property-single.html:41
+msgid "Please"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:36
+#: .\houses\templates\houses\property-single.html:41
+msgid "Log in"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:36
+#: .\houses\templates\houses\property-single.html:41
+msgid "to edit"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:41
+#: .\houses\templates\houses\property-single.html:47
+msgid "Edit"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:44
+#: .\houses\templates\houses\property-single.html:50
+msgid "Delete"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:124
+#: .\houses\templates\houses\property-single.html:306
+msgid "comment"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:128
+#: .\houses\templates\houses\property-single.html:310
+msgid "Send Message"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:162
+msgid "My Properties"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:198
+msgid "Click here to view"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:205
+msgid "Area"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:211
+#: .\houses\templates\houses\property-single.html:139
+msgid "Beds"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:215
+#: .\houses\templates\houses\property-single.html:143
+msgid "Baths"
+msgstr ""
+
+#: .\houses\templates\houses\agent-single.html:219
+#: .\houses\templates\houses\property-single.html:147
+msgid "Garages"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:113
+#: .\houses\templates\houses\base.html:117
+msgid "Home"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:126
+#: .\houses\templates\houses\base.html:132
+msgid "Profile"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:139
+#: .\houses\templates\houses\base.html:143
+msgid "Messages"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:148
+msgid "Log Out"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:154
+#: .\houses\templates\houses\base.html:158
+msgid "Register"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:163
+#: .\houses\templates\houses\base.html:167
+msgid "Login"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:173
+#: .\houses\templates\houses\base.html:177
+msgid "About"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:182
+msgid "Pages"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:184
+msgid "Properties"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:185
+msgid "Agents"
+msgstr ""
+
+#: .\houses\templates\houses\base.html:186
+msgid "Blogs"
+msgstr ""
+
+#: .\houses\templates\houses\property-single.html:109
+msgid "Quick Summary"
+msgstr ""
+
+#: .\houses\templates\houses\property-single.html:117
+msgid "Property ID"
+msgstr ""
+
+#: .\houses\templates\houses\property-single.html:125
+msgid "Property Type"
+msgstr ""
+
+#: .\houses\templates\houses\property-single.html:161
+msgid "Property Description"
+msgstr ""
+
+#: .\houses\templates\houses\property-single.html:220
+msgid "Contact Agent"
+msgstr ""

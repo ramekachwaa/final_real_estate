@@ -1,0 +1,19 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+
+
+  <main id="main" style="margin:100px 0;">
+<div style="display:flex;justify-content:center;align-items:center;">
+  <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button value="submit" style="position:absolute;left:45%;width:130px;height:40px;margin:13px 15px;">Submit</button>
+  </form>
+</div>
+  </main><!-- End #main -->
+
+{% endblock %}

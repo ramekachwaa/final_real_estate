@@ -1,0 +1,52 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Profiles{% endblock %}
+{% block css %}
+.body{
+  position:absolute;
+bottom:100%;
+}
+{% endblock %}
+{% block content %}
+  <main id="main" style="position:relative;top:-100px;">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+    </section><!-- End Intro Single -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Number Of Codes</th>
+      <th scope="col">Add to Team/Remove from Team</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for member in members %}
+    <tr>
+      <td><a href="{% url 'member_profile' member.id %}">{{member.user.username}}</a></td>
+      {% if user.current_user.team_leader_set %}
+      <td>
+            {% for code in member.codes.all %}
+                <p>{{code.value}}</p>
+            {% endfor %}
+      </td>
+      {% else %}
+      <td>{{member.codes.count}}</td>
+      {% endif %}
+      {% if request.user.team_leader %}
+          {% if member.leader != request.user.team_leader %}
+            <td><a class="btn btn-success" href="{% url 'add_member_to_team' member.id request.user.team_leader.id %}">ADD</a></td>
+          {% else %}
+            <td><a class="btn btn-danger" href="{% url 'remove_member_from_team' member.id request.user.team_leader.id %}">REMOVE</a></td>
+          {% endif %}
+      {% endif %}
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+  </main><!-- End #main -->
+{% endblock %}
