@@ -1,0 +1,18 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Register a new member{% endblock %}
+
+{% block content %}
+
+
+<form method="post" enctype="multipart/form-data" style="margin:100px 30px;">
+    {% csrf_token %}
+    <input type="password" name="pass_old" placeholder="Enter Your Old Password">
+    <input type="password" name="pass_new" placeholder="Enter The New Password">
+    <input type="submit" value="Change" style="width:130px;height:40px;margin:13px 15px;">
+</form>
+
+
+
+{% endblock %}

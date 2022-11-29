@@ -1,0 +1,51 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+{% block title %}Codes Deal{% endblock %}
+{% block css %}
+.body{
+  position:absolute;
+bottom:100%;
+}
+{% endblock %}
+{% block content %}
+<form method="post" enctype="multipart/form-data" style="margin:100px 30px;">
+    {% csrf_token %}
+    <input type="text" name="location" placeholder="Enter a New Location">
+    <input type="submit" value="Add" style="width:130px;height:40px;margin:13px 15px;">
+</form>
+  <main id="main" style="position:relative;top:-300px;">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+    </section><!-- End Intro Single -->
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Location</th>
+      <!--<th scope="col">Edit</th>-->
+      <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for location in locations %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{location.name}}</td>
+      <!--<td><p style="color:green;">{{code.project}}    <a class="btn btn-success" href="">EDIT</a></p></td>-->
+      <td><p style="color:red;">{{code.project}}    <a class="btn btn-danger" href="{% url 'edit_locations_remove' location.id %}">REMOVE</a></p></td>
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+  </main><!-- End #main -->
+{% endblock %}

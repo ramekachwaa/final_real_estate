@@ -21,17 +21,21 @@
       <th scope="col">Type</th>
       <th scope="col">Location</th>
       <th scope="col">number of units</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Remove</th>
     </tr>
   </thead>
   <tbody><!-- position:relative;top:50px;  -->
-    {% for project in all_projects %}
+    {% for project,count in projects %}
     <tr style="position:relative">
       <th scope="row">{{forloop.counter}}</th>
       <td><a style="color:blue;" href="{% url 'show_single_project' project.id %}">{{project.name}}</a></td>
       <td><a style="color:blue;" href="{% url 'show_single_company' project.company.id %}"><div><img style="width:60%;height:50px;" src="{{project.company.logo.url}}"></div>{{project.company}}</a></td>
       <td>{{project.type}}</td>
       <td>{{project.location}}</td>
-      <td>{{project.house_set.all.count}}</td>
+      <td>{{count}}</td>
+      <td><a class="btn btn-success" href="{% url 'edit_project' project.id %}">EDIT</a></td>
+      <td><a class="btn btn-danger" href="{% url 'delete_project' project.id %}">REMOVE</a></td>
     </tr>
     {% endfor %}
   </tbody>

@@ -68,6 +68,20 @@ urlpatterns = [
 
     path('profiles', views.profiles,name="profiles"),
 
+    path('edit_developer/<int:pk>', views.edit_developer.as_view(),name="edit_developer"),
+    path('delete_developer/<int:developer_id>', views.delete_developer,name="delete_developer"),
+
+    path('delete_project/<int:project_id>', views.delete_project,name="delete_project"),
+    path('edit_project/<int:pk>', views.edit_project.as_view(),name="edit_project"),
+
     path('add_member_to_team/<int:member_id>/<int:leader_id>', views.add_member_to_team,name="add_member_to_team"),
     path('remove_member_from_team/<int:member_id>/<int:leader_id>', views.remove_member_from_team,name="remove_member_from_team"),
+
+
+    path('change_admin_pass', views.change_admin_pass,name="change_admin_pass"),
+
+    path('edit_locations', views.edit_locations,name="edit_locations"),
+    path('edit_locations_remove/<int:id>', views.edit_locations_remove,name="edit_locations_remove"),
+
+    path('guest_code', views.guest_code,name="guest_code"),
 ]

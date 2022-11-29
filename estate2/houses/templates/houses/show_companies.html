@@ -19,6 +19,8 @@
       <th scope="col">Name</th>
       <th scope="col">Location</th>
       <th scope="col">number of units</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -28,7 +30,8 @@
       <td><img style="width:50px;height:50px;" src="{{company.logo.url}}"><a style="color:blue;" href="{% url 'show_single_company' company.id %}">{{company.name}}</a></td>
       <td>{{company.location}}</td>
       <td>{{company.house_set.all.count}}</td>
-      <td></td>
+      <td><a class="btn btn-success" href="{% url 'edit_developer' company.id %}">EDIT</a></td>
+      <td><a class="btn btn-danger" href="{% url 'delete_developer' company.id %}">REMOVE</a></td>
     </tr>
     {% endfor %}
   </tbody>

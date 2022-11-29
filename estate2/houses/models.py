@@ -48,6 +48,11 @@ choices3 = (("Ain Shokana","Ain Shokana"),
                 ("6th of October","6th of October"),
                 ("New Zayed","New Zayed"))
 
+class Location(models.Model):
+    name = models.CharField(max_length=100,default='')
+    def __str__(self):
+        return f"{self.name}"
+
 class Amenity(models.Model):
     status_choices = (
         (_("Balcony"), _("Balcony")),
@@ -86,6 +91,7 @@ class House(models.Model):
     type = models.CharField(max_length=50,choices=choices2,default="Apartment")
     address = models.CharField(_("address"),max_length=50)
     location = models.CharField(max_length=50,choices=choices3,null=True,blank=True)
+    location_new = models.OneToOneField(Location,on_delete=models.CASCADE,null=True,blank=True)
     status = models.CharField(_("status"),max_length=100,choices=status_choices)
     area = models.IntegerField(_("area"),)
     beds = models.IntegerField(_("beds"),)
@@ -109,6 +115,7 @@ class House(models.Model):
 class Company(models.Model):
     name = models.CharField(max_length=500)
     location = models.CharField(max_length=500,choices=choices3,default='Ain Shokana')
+    location_new = models.OneToOneField(Location, on_delete=models.CASCADE, null=True, blank=True)
     logo = models.ImageField(upload_to="images",default='houses/real_estate_logo.jpg')
     def __str__(self):
         return f"{self.name}"
@@ -118,6 +125,7 @@ class Project(models.Model):
     company = models.ForeignKey(Company,on_delete=models.CASCADE,null=True,blank=True)
     type = models.CharField(max_length=50, choices=choices2, default="Apartment")
     location = models.CharField(max_length=500, choices=choices3,default='Ain Shokana')
+    location_new = models.OneToOneField(Location, on_delete=models.CASCADE, null=True, blank=True)
     number_of_units = models.IntegerField(default=1)
 
     def __str__(self):
@@ -147,6 +155,7 @@ class Inquiry(models.Model):
     email = models.EmailField()
     phone_number = models.CharField(max_length=30)
     location = models.CharField(max_length=50, choices=choices3, null=True, blank=True,default='Ain Shokana')
+    location_new = models.OneToOneField(Location, on_delete=models.CASCADE, null=True, blank=True)
     type = models.CharField(max_length=50, choices=choices2, default="Apartment")
     max_price = models.IntegerField()
     min_size = models.IntegerField()
@@ -214,3 +223,4 @@ class CodePermission(models.Model):
     accepted = models.BooleanField(default=False)
     def __str__(self):
         return f"({self.code})'s code Permission"
+

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Amenity,House,Message,Image_of_house,Inquiry,Project,Company,footer_text,about,Team_leader,Member,Code,CodePermission
+from .models import Amenity,House,Message,Image_of_house,Inquiry,Project,Company,footer_text,about,Team_leader,Member,Code,CodePermission,Location
 from .forms import HouseForm,SearchForm,MessageForm,InquiryForm,ProjectForm,CompanyForm,CodeForm,CodePermissionForm
 from django.db.models import Q
 from django.views.generic import ListView
@@ -16,6 +16,21 @@ from django.contrib.auth.models import User
 #https://www.redww.com/wp-content/uploads/2021/02/artboards_06-copy-2-8.jpg
 #https://www.redww.com/wp-content/uploads/2021/02/artboards_03-copy-2-7.jpg
 #https://www.redww.com/wp-content/uploads/2021/02/IL-BOSCO-City-12.jpg
+
+def change_admin_pass(request):
+    admin_user = User.objects.all()[0]
+    if request.method == 'POST':
+        old_pass = request.POST.get('pass_old')
+        pass_new = request.POST.get('pass_new')
+        print(f'old: {old_pass}')
+        print(f'new: {pass_new}')
+        print(f'admin_user.password: {admin_user.password}')
+        if admin_user.check_password(old_pass):
+            admin_user.set_password(pass_new)
+            admin_user.save()
+            return redirect('home')
+    return render(request,'houses/change_admin_pass.html')
+
 def index(request):
     if request.method=="POST":
         print("FOOOOOOOOOOOOOOOOOOORM")
@@ -185,8 +200,17 @@ def show_all_inquiry(request):
 def show_all_projects(request):#Project,Company
     form = ProjectForm()
     all_projects = Project.objects.all()
+    projects = []
+    for project in all_projects:
+        num_units = 0
+        for house in project.house_set.all():
+            num_units += house.number_of_units
+        projects.append([project,num_units])
+        project.number_of_units = num_units
+        project.save()
     context = {"all_projects":all_projects,
-               "form":form}
+               "form":form,
+               "projects":projects}
     return render(request,'houses/show_projects.html',context)
 
 def add_project(request):
@@ -345,7 +369,54 @@ def show_all_companies(request):
     all_companies = Company.objects.all()
     context = {"all_companies":all_companies}
     return render(request,'houses/show_companies.html',context)
+
+def delete_developer(request,developer_id):
+    dev = Company.objects.get(id=developer_id)
+    dev.delete()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+class edit_developer(UpdateView):
+    model = Company
+    template_name = 'houses/update_footer.html'
+    fields = "__all__"
+    success_url = reverse_lazy("show_all_companies")
+
+#########################################
+def delete_project(request,project_id):
+    project = Project.objects.get(id=project_id)
+    project.delete()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+class edit_project(UpdateView):
+    model = Project
+    template_name = 'houses/update_footer.html'
+    fields = ["name","company","type","location"]
+    success_url = reverse_lazy("show_all_projects")
 ###########################################################################
+
+
+def edit_locations(request):
+    locations = Location.objects.all()
+    if request.method == 'POST':
+        location = request.POST.get('location')
+        print(f'loc--{location}')
+        for loc in locations:
+            if location == loc.name:
+                return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+        Location(name=location).save()
+        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+    context = {"locations":locations}
+    return render(request,'houses/Edit_Locations.html',context)
+
+def edit_locations_remove(request,id):
+    location = Location.objects.get(id=id)
+    location.delete()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+def guest_code(request):
+    context = {}
+    return render(request,'',context)
+
 def show_single_company(request,id):
     order_index = 0
     if request.method == "POST":
@@ -467,9 +538,16 @@ def codes_deals(request):
     except Exception as e:
         print(f"error ==> {e}")
         return redirect('you_dont_have_access')
-
-
-
+"""
+def change_admin_pass(request):
+    admin = User.objects.all()[0]
+    if request.method == 'POST':
+        pass
+        ######
+    print(f'admin??--{form}')
+    context = {}
+    return render(request,'houses/change_admin_pass.html',context)
+"""
 def add_member_to_team(request,member_id,leader_id):
     member = Member.objects.get(id=member_id)
     leader = Team_leader.objects.get(id=leader_id)
